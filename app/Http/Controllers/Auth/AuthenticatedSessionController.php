@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -30,9 +31,32 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        $usuario = Auth::id();
+        $usuario_data = User::find($usuario);
+
+        $usuario_id = $usuario_data->id;
+        session()->put('usuario_id', $usuario_id);
+
+        $usuario_name = $usuario_data->name;
+        session()->put('usuario_name', $usuario_name);
+
+        $usuario_telefono = $usuario_data->telefono;
+        session()->put('usuario_telefono', $usuario_telefono);
+
+        $usuario_email = $usuario_data->email;
+        session()->put('usuario_email', $usuario_email);        
+
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        //Todos los usuarios
+        $todosLosUsuarios = User::all();
+
+        return redirect()
+            ->intended(RouteServiceProvider::HOME)
+            ->with([
+                    'todosLosUsuarios' => $todosLosUsuarios,
+                    ])
+            ;            
     }
 
     /**

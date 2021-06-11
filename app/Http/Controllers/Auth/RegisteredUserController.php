@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'telefono' => $request->telefono,
             'password' => Hash::make($request->password),
         ]);
 
@@ -49,11 +50,17 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-            
+        //Obtener el ID del nuevo usuario
+        $user_id = $user->id;
+
+        //Agregarlo a una variable de sesión
+        session()->put('user_id', $user_id);
+        session()->put('name', $request->name);
+        session()->put('email', $request->email);
 
         return redirect(RouteServiceProvider::HOME)
-            ->with(
-                ['user' => $user]
-            );
+            ->with(['user' => $user])
+            ->withSuccess(['success'=>'Usuario agregado exitosamente.'])
+            ;
     }
 }
