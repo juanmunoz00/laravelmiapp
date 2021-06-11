@@ -34,45 +34,16 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                    Bienvenido
                 </div>
-
+                
                 <div>
-                    <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Teléfono</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="table-active">
-                            <th scope="row">
-                                @if(session()->has('usuario_id'))
-                                    {{ session()->get('usuario_id') }}                            
-                                @endif                            
-                            </th>
-                            <td>
-                                @if(session()->has('usuario_name'))
-                                    {{ session()->get('usuario_name') }}                            
-                                @endif
-                            </td>
-                            <td>
-                                @if(session()->has('usuario_email'))
-                                    {{ session()->get('usuario_email') }}                            
-                                @endif                            
-                            </td>
-                            <td>
-                                @if(session()->has('usuario_telefono'))
-                                    {{ session()->get('usuario_telefono') }}                            
-                                @endif                                                        
-                            </td>
-                          </tr>
-                        </tbody>
-                    </table>
+
+                    @foreach ( $todosLosUsuarios as $usuario )
+                        {{ $todosLosUsuarios[0] }}
+                    @endforeach                    
                 </div>
+                
 
             </div>
         </div>
