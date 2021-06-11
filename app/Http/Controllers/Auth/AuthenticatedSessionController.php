@@ -50,19 +50,11 @@ class AuthenticatedSessionController extends Controller
 
         //Todos los usuarios
         $todosLosUsuarios = User::where('id','<>',$usuario_id)->get();
-        //dd($todosLosUsuarios);
+
         return view('dashboard')->with([
             'todosLosUsuarios' => $todosLosUsuarios,
         ]);
-
-        /*
-        return redirect()
-            ->intended(RouteServiceProvider::HOME)
-            ->with([
-                    'todosLosUsuarios' => $todosLosUsuarios,
-                    ])
-            ;
-        */            
+        
     }
 
     /**

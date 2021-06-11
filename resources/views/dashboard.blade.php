@@ -34,14 +34,47 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Bienvenido
+                    Bienvenidos
                 </div>
+                    
                 
                 <div>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Modificar</th>
+                            <th scope="col">Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ( $todosLosUsuarios as $usuario )
+                                <tr class="table-active">
+                                    <th scope="row">
+                                        {{ $usuario->id }}
+                                    </th>
+                                    <td>
+                                        {{ $usuario->name }}
+                                    </td>
+                                    <td>
+                                        {{ $usuario->email }}
+                                    </td>
+                                    <td>
+                                        {{ $usuario->telefono }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-info">Modificar</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">Eliminar</button>
+                                    </td>                                       
+                                </tr>                                
+                            @endforeach
+                        </tbody>                    
 
-                    @foreach ( $todosLosUsuarios as $usuario )
-                        {{ $todosLosUsuarios[0] }}
-                    @endforeach                    
                 </div>
                 
 
