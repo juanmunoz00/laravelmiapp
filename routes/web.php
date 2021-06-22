@@ -21,4 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::post('/UsuariosController/buscausuario', [App\Http\Controllers\UsuariosController::class, 'buscausuario'])->name('buscausuario');
+
 require __DIR__.'/auth.php';

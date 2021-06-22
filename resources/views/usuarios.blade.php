@@ -1,14 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-
-        <form method="POST" action="{{ route('buscausuario') }}">
-            @csrf
-
-                <x-button class="ml-3">
-                    {{ __('Busca Usuario') }}
-                </x-button>
-            </div>
-        </form>        
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
     </x-slot>
 
     <div class="py-12">

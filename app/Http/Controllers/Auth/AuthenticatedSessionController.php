@@ -48,13 +48,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        return view('dashboard')->with([
+            'todosLosUsuarios' => $todosLosUsuarios,
+        ]);
+        /*
         //Todos los usuarios
         $todosLosUsuarios = User::where('id','<>',$usuario_id)->get();
 
         return view('dashboard')->with([
             'todosLosUsuarios' => $todosLosUsuarios,
         ]);
-        
+        */
     }
 
     /**
